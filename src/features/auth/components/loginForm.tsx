@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { Mail, Lock } from "lucide-react";
+// import { yupResolver } from "@hookform/resolvers/yup"; // ⬅️ ADD THIS
 
 import { Button } from "@/src/components/ui/button";
 import { AppCard } from "@/src/components/ui/appCard";
@@ -11,6 +12,7 @@ import { useAuthContext } from "@/src/features/auth/context/authContext";
 import { InputField } from "@/src/components/inputs/InputField";
 import { LoginFormValues } from "../types";
 import { LOGIN_FORM_DEFAULT_VALUES } from "../constants";
+import { EMAIL_REGEX } from "@/src/constants/regex";
 
 export const LoginForm = () => {
 	const router = useRouter();
@@ -20,6 +22,7 @@ export const LoginForm = () => {
 		formState: { errors, isSubmitting },
 	} = useForm<LoginFormValues>({
 		defaultValues: LOGIN_FORM_DEFAULT_VALUES,
+		// resolver: yupResolver(loginSchema),
 		mode: "onBlur",
 	});
 	const { state: authState, setCredentials } = useAuthContext();
@@ -56,7 +59,7 @@ export const LoginForm = () => {
 						rules={{
 							required: "Email is required",
 							pattern: {
-								value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+								value: EMAIL_REGEX,
 								message: "Enter a valid email",
 							},
 						}}
