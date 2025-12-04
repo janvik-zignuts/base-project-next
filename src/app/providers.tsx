@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AuthProvider } from '@/src/features/auth/context/authContext';
 import { createQueryClient } from '@/src/lib/react-query';
 import { store } from '@/src/store/store';
+import { ModalProvider } from '../components/modal/context/modalContext';
 
 export const Providers = ({ children }: { children: ReactNode }) => {
   const [queryClient] = useState(() => createQueryClient());
@@ -15,7 +16,11 @@ export const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <ReduxProvider store={store}>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+           <ModalProvider>
+            {children}
+          </ModalProvider>
+         </AuthProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ReduxProvider>
