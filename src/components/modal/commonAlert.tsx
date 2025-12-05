@@ -52,7 +52,9 @@ export const CommonAlert=({
             <AlertDialogCancel>{cancelText}</AlertDialogCancel>
           )}
 
-          <AlertDialogAction onClick={onConfirm}>
+          <AlertDialogAction
+           className="bg-red-600 hover:bg-red-700 text-white"
+          onClick={onConfirm}>
             {confirmText}
           </AlertDialogAction>
         </AlertDialogFooter>
