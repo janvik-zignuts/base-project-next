@@ -63,7 +63,6 @@ export const Dropdown=({ trigger, items, className }: AppDropdownProps) =>{
               </DropdownMenuSub>
             )
           }
-
           return (
             <DropdownMenuItem
               key={i}

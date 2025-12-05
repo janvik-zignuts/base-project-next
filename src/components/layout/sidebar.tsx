@@ -8,7 +8,6 @@ import { Button } from '@/src/components/ui/button';
 import { cn } from '@/src/utils/utils';
 import { useAuthContext } from '@/src/features/auth/context/authContext';
 import { navItems } from '@/src/constants';
-import { CommonAlert } from '../modal/commonAlert';
 import { useModal } from '../modal/context/modalContext';
 
 
@@ -25,7 +24,7 @@ export const Sidebar = () => {
   return (
     <aside className="hidden w-64 flex-shrink-0 border-r border-border/60 bg-background/70 backdrop-blur md:flex md:flex-col">
       <div className="border-b border-border/60 p-4">
-        <div className="text-xl font-semibold tracking-wide">Base Setup</div>
+        <div className="text-2xl font-semibold tracking-wide">Base Setup</div>
         <p className="text-sm text-muted-foreground">Workspace Control</p>
       </div>
       <nav className="flex-1 px-6 py-6 space-y-1">
@@ -55,7 +54,7 @@ export const Sidebar = () => {
           <LogOut className="size-4" />
           Logout
         </Button>
-          <CommonAlert
+          {/* <CommonAlert
         open={isOpen}
         onOpenChange={closeModal}
         title="Are you sure want to logout ?"
@@ -63,7 +62,7 @@ export const Sidebar = () => {
         confirmText="Logout"
         cancelText="Cancel"
         onConfirm={handleLogout}
-      />
+      /> */}
       </div>
     </aside>
   );
