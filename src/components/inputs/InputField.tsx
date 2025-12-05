@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { ReactNode } from "react";
-import { FieldError, UseFormRegister } from "react-hook-form";
+import React, { ReactNode, useState } from "react";
+import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import { cn } from "@/src/utils/utils";
+import { FieldError, UseFormRegister } from "react-hook-form";
+
 
 interface InputFieldProps {
   id: string;
@@ -18,50 +20,63 @@ interface InputFieldProps {
   rules?: any;
 }
 
-export function InputField({
+export const InputField:React.FC<InputFieldProps> = ({
   id,
   label,
-  type = "text",
+  type,
   placeholder,
-  className,
   icon,
-  error,
   register,
   rules,
-}: InputFieldProps) {
+  error,
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const isPassword = type === "password";
+  const inputType = isPassword && isVisible ? "text" : type;
+
   return (
-    <div className="space-y-2">
-      {/* Label */}
-      <label
-        htmlFor={id}
-        className="text-sm font-medium text-foreground"
-      >
+    <div className="flex flex-col gap-1">
+      <label htmlFor={id} className="text-sm font-medium text-gray-700">
         {label}
       </label>
 
       <div className="relative">
-        {/* Optional Left Icon */}
-        {icon && (
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-            {icon}
-          </span>
-        )}
+        {/* Left Icon */}
+        <div className="absolute inset-y-0 left-3 flex items-center">
+          {icon}
+        </div>
 
         {/* Input */}
         <Input
           id={id}
-          type={type}
+          type={inputType}
           placeholder={placeholder}
-          className={cn(icon && "pl-9", className)}
-          aria-invalid={Boolean(error)}
           {...register(id, rules)}
+          className={cn(
+            "pl-10 pr-12",
+            error && "border-red-500"
+          )}
         />
+
+        {/* Right Eye Icon (only for password field) */}
+        {isPassword && (
+          <button
+            type="button"
+            className="absolute inset-y-0 right-3 flex items-center"
+            onClick={() => setIsVisible((prev) => !prev)}
+          >
+            {isVisible ? (
+              <EyeIcon className="text-[#856EAA] w-5 h-5" />
+            ) : (
+              <EyeClosedIcon className="text-[#856EAA] w-5 h-5" />
+            )}
+          </button>
+        )}
       </div>
 
-      {/* Error Message */}
-      {error && (
-        <p className="text-sm text-destructive">{error.message}</p>
-      )}
+      {/* Error */}
+      {error && <p className="text-xs text-red-500">{error.message}</p>}
     </div>
   );
-}
+};

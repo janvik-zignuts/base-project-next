@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -121,4 +122,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #E9E4F8 inset !important;
+  box-shadow: 0 0 0px 1000px #E9E4F8 inset !important;
+  background-color: #E9E4F8 !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #D9CFEB inset !important;
+  box-shadow: 0 0 0px 1000px #D9CFEB inset !important;
+  background-color: #D9CFEB !important;
 }

@@ -8,11 +8,24 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-muted/40 px-4 py-16">
-      <div className="mb-8 text-center space-y-2">
+   
+    <div
+      className="min-h-screen flex flex-col justify-center relative"
+      style={{
+        backgroundImage: "url('/bg.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white w-full py-8 px-4 sm:rounded-xl shadow-xl border relative">
+          <h1 className="text-center text-[20px] font-medium">
+            Sign in with email
+          </h1>
+          <LoginForm />
+        </div>
       </div>
-      <LoginForm />
-    </main>
+    </div>
   );
 }
 
