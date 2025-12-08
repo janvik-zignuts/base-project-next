@@ -125,18 +125,37 @@
 }
 
 
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #E9E4F8 inset !important;
-  box-shadow: 0 0 0px 1000px #E9E4F8 inset !important;
-  background-color: #E9E4F8 !important;
-  transition: background-color 9999s ease-in-out 0s !important;
+/* Reset border/outline for HeroUI inner input so no extra box appears */
+[data-slot="input"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
 }
 
-input:-webkit-autofill:hover,
+/* input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: inherit !important;
+} */
+
+/* input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0px 1000px #D9CFEB inset !important;
-  box-shadow: 0 0 0px 1000px #D9CFEB inset !important;
-  background-color: #D9CFEB !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  background-color: transparent !important;
+} */
+
+/* Login inputs: change bg when they have value or autofill */
+.value-bg-change {
+  background-color: #fde7f0; /* empty state - light pink */
+  transition: background-color 150ms ease-out;
+}
+
+.value-bg-change:has(input:not(:placeholder-shown)),
+.value-bg-change:has(input:-webkit-autofill) {
+  background-color: #e9e4f8; /* filled/autofill state - light purple */
 }
 
 [data-slot="popover-content"] {

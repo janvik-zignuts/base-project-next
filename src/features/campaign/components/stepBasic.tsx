@@ -1,6 +1,7 @@
 "use client";
 
-import { Input } from "@/src/components/ui/input";
+import { Input } from "@heroui/react";
+
 
 export const  StepBasics=()=> {
   return (

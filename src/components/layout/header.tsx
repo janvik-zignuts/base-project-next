@@ -1,7 +1,7 @@
 'use client';
 
 import { Bell, Menu, UserCircle2 } from 'lucide-react';
-import { Button } from '@/src/components/ui/button';
+import { Button } from '@heroui/react';
 
 type HeaderProps = {
   title?: string;
@@ -15,13 +15,13 @@ export const Header = ({ title = 'Dashboard', subtitle }: HeaderProps) => (
       {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
     </div>
     <div className="flex items-center gap-2">
-      <Button variant="ghost" size="icon" className="md:hidden">
+      <Button variant="ghost" size="md" className="md:hidden">
         <Menu className="size-5" />
       </Button>
-      <Button variant="ghost" size="icon">
+      <Button variant="ghost" size="md">
         <Bell className="size-5" />
       </Button>
-      <Button variant="outline" size="icon" className="rounded-full border-border/80">
+      <Button variant="faded" size="md" className="rounded-full border-border/80">
         <UserCircle2 className="size-6" />
       </Button>
     </div>

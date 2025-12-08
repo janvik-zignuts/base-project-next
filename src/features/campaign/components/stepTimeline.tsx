@@ -1,6 +1,5 @@
 "use client";
 
-import { DatePickerField } from "@/src/components/calendar/datePicker";
 import { useState } from "react";
 
 
@@ -42,24 +41,24 @@ export function StepTimeline() {
       {/* Campaign Dates */}
       <div className="grid grid-cols-2 gap-4">
         {/* Start Campaign */}
-        <DatePickerField
+        {/* <DatePickerField
           label="Start Campaign"
           date={campaignStart}
           onChange={setCampaignStart}
-        />
+        /> */}
 
         {/* End Campaign */}
-        <DatePickerField
+        {/* <DatePickerField
           label="End Campaign"
           date={campaignEnd}
           onChange={setCampaignEnd}
-        />
+        /> */}
       </div>
 
       {/* Flights */}
       {flights.map((flight, index) => (
         <div key={flight.id} className="grid grid-cols-2 gap-4">
-          <DatePickerField
+          {/* <DatePickerField
             label={`Flight ${index + 1}`}
             date={flight.start}
             onChange={(date) => updateFlight(flight.id, "start", date)}
@@ -69,7 +68,7 @@ export function StepTimeline() {
             label={`End Flight ${index + 1}`}
             date={flight.end}
             onChange={(date) => updateFlight(flight.id, "end", date)}
-          />
+          /> */}
         </div>
       ))}
 

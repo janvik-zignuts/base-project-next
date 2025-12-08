@@ -4,21 +4,22 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LogOut } from 'lucide-react';
 
-import { Button } from '@/src/components/ui/button';
+import { Button } from "@heroui/react";
 import { cn } from '@/src/utils/utils';
 import { useAuthContext } from '@/src/features/auth/context/authContext';
 import { navItems } from '@/src/constants';
-import { CommonAlert } from '../modal/commonAlert';
-import { useModal } from '../modal/context/modalContext';
+// import { CommonAlert } from '../modal/commonAlert';
+// import { useModal } from '../modal/context/modalContext';
 
 
 export const Sidebar = () => {
   const pathname = usePathname();
   const { logout } = useAuthContext();
- const { openModal,isOpen,closeModal } = useModal();
+//  const { openModal,isOpen,closeModal } = useModal();
+
 
   const handleLogout = () => {
-    closeModal()
+    // closeModal()
     logout()
   };
 
@@ -50,20 +51,12 @@ export const Sidebar = () => {
         <Button
           variant="ghost"
           className="flex w-full justify-start gap-2 text-destructive hover:bg-destructive/10 hover:text-destructive"
-          onClick={()=>openModal('LOGOUT')}
+          onClick={()=>handleLogout()}
         >
           <LogOut className="size-4" />
           Logout
         </Button>
-          <CommonAlert
-        open={isOpen}
-        onOpenChange={closeModal}
-        title="Are you sure want to logout ?"
-        description="This action cannot be undone."
-        confirmText="Logout"
-        cancelText="Cancel"
-        onConfirm={handleLogout}
-      />
+         
       </div>
     </aside>
   );

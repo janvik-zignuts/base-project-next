@@ -1,15 +1,12 @@
 "use client";
 
 import { DashboardShell } from '@/src/components/layout/dashboardShell';
-import { DataTable } from '@/src/components/table/dataTable';
-import { Button } from '@/src/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/src/components/ui/card';
 import { Plus, Trash2 } from 'lucide-react';
 
 import { useModal } from '@/src/components/modal/context/modalContext';
-import { campaignColumns } from '../../features/campaign/components/columns';
-import { Campaigns } from '@/src/constants';
 import { NewCampaignModal } from '@/src/features/campaign/components/NewCampaignModal';
+import { Button } from '@heroui/react';
 
 export default function CampaignsPage() {
   const { openModal } = useModal();
@@ -34,13 +31,13 @@ export default function CampaignsPage() {
         <CardHeader className="flex flex-row items-center justify-end space-y-0 border-b border-[#F0DDFB]  py-4">
           <div className="flex items-center gap-3">
             <Button
-              variant="outline"
+              variant="bordered"
               className="h-9 gap-2 rounded-full border-[#E3C6FA] bg-white px-4 text-xs font-medium text-[#3B2B4A] hover:bg-[#F7ECFF]"
             >
               Campaign filter
             </Button>
             <Button
-              variant="outline"
+              variant="bordered"
               className="h-9 gap-2 rounded-full border-[#FFBFD3] bg-[#FFEFF5] px-4 text-xs font-medium text-[#6D102D] hover:bg-[#FFE1EB]"
             >
               Archive
@@ -49,7 +46,7 @@ export default function CampaignsPage() {
           </div>
         </CardHeader>
         <CardContent className="p-0">
-            <DataTable columns={campaignColumns} data={Campaigns} />
+            {/* <DataTable columns={campaignColumns} data={Campaigns} /> */}
         </CardContent>
       </Card>
 
